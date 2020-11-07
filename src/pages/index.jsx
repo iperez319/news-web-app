@@ -5,7 +5,6 @@ import NewsArticle from '../components/NewsArticle';
 import {Input, Switch, Space} from 'antd';
 import _ from "lodash";
 import NewsGrid from '../components/NewsGrid';
-import {useSelector} from 'react-redux';yar
 
 export default function HomePage(props){
 
@@ -17,7 +16,6 @@ export default function HomePage(props){
     }, [])
 
     const {Search} = Input;
-    const
 
     const handleToggle = () => {
 
