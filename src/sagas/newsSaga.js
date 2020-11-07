@@ -6,7 +6,6 @@ function* getHeadlines(action){
     var category = action.payload;
     try{
        var response = yield call(get, `https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=78b9d599c4f94f8fa3afb1a5458928d6`);
-       console.log(response)
        yield put(getHeadlinesSucceeded({type: category, data: response.articles}));
     }
     catch (e){

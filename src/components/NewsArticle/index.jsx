@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Avatar, Space, Tag, Button} from 'antd';
+import {Avatar, Space, Tag, Button, Typography} from 'antd';
 import {useSelector} from 'react-redux';
 import moment from 'moment';
 import psl from 'psl';
@@ -10,10 +10,11 @@ import {
 export default function NewsArticle(props){
 
     const {article} = props;
+    const { Title, Paragraph } = Typography;
     let typeTag = null;
 
     switch(article.type){
-        case "tech":
+        case "technology":
             typeTag = <Tag color={'red'}>Tech</Tag>
             break;
         case "sports":
@@ -42,8 +43,6 @@ export default function NewsArticle(props){
         hostname = hostname.split(':')[0];
         //find & remove "?"
         hostname = hostname.split('?')[0];
-
-        console.log(psl.parse(hostname));
         return psl.parse(hostname).domain;
     }
 
@@ -53,9 +52,9 @@ export default function NewsArticle(props){
                 <div style={{display: 'flex', flexDirection: 'column', padding: '5px 10px 5px 10px'}}>
                     <div style={{marginBottom: '10px'}}>
                         {typeTag}
-                        <Tag icon={<SyncOutlined spin />} color="processing">
-                            Checking Paywall
-                        </Tag>
+                        {/*<Tag icon={<SyncOutlined spin />} color="processing">*/}
+                        {/*    Checking Paywall*/}
+                        {/*</Tag>*/}
                     </div>
                     <h5 style={{color: '#656565', fontWeight: '600'}}>{moment.utc(article.publishedAt).from(moment())} {article.author == null || article.author == "" ? "" : "/ By " + article.author.replace('By ', '')}</h5>
                     <div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
@@ -64,9 +63,9 @@ export default function NewsArticle(props){
                             <span>{article.source.name}</span>
                         </Space>
                     </div>
-                    <span style={{lineHeight: 'normal', fontWeight: 'bold', fontSize: '20px', marginBottom: '10px'}}>{article.title}</span>
+                    <Title level={3} ellipsis={{rows: 2}} style={{lineHeight: 'normal', fontSize: '20px', marginBottom: '10px'}}>{article.title}</Title>
                     {
-                        article.description ? <span style={{lineHeight: 'normal', marginBottom: '10px'}}>{article.description}</span> : null
+                        article.description ? <p style={{lineHeight: 'normal', marginBottom: '10px'}}>{article.description}</p> : null
                     }
                     <Button type={'link'} style={{color: '#1890FF'}} onClick={() => window.open(article.url)}>Go to Article</Button>
                 </div>
@@ -81,9 +80,9 @@ export default function NewsArticle(props){
                     <div style={{width: '100%', background:`url(${article.urlToImage}) no-repeat scroll center center`, backgroundSize: 'cover', objectFit: 'cover', height: '200px'}}></div>
                     <div style={{position: 'absolute', top: '15px', left: '15px'}}>
                         {typeTag}
-                        <Tag icon={<SyncOutlined spin />} color="processing">
-                            Checking Paywall
-                        </Tag>
+                        {/*<Tag icon={<SyncOutlined spin />} color="processing">*/}
+                        {/*    Checking Paywall*/}
+                        {/*</Tag>*/}
                     </div>
                 </div>
                 <div style={{display: 'flex', flexDirection: 'column', padding: '5px 10px 5px 10px'}}>
@@ -94,9 +93,9 @@ export default function NewsArticle(props){
                             <span>{article.source.name}</span>
                         </Space>
                     </div>
-                    <span style={{lineHeight: 'normal', fontWeight: 'bold', fontSize: '20px', marginBottom: '10px'}}>{article.title}</span>
+                    <Title level={3} ellipsis={{rows: 2}} style={{lineHeight: 'normal', fontSize: '20px', marginBottom: '10px'}}>{article.title}</Title>
                     {
-                        article.description ? <span style={{lineHeight: 'normal', marginBottom: '10px'}}>{article.description}</span> : null
+                        article.description ? <Paragraph ellipsis={{rows: 2, expandable: true}} style={{marginBottom: '10px'}}>{article.description}</Paragraph> : null
                     }
                     <Button type={'link'} style={{color: '#1890FF'}} onClick={() => window.open(article.url)}>Go to Article</Button>
                 </div>
