@@ -31,9 +31,6 @@ export default function NewsGrid(props){
 
     const generateRows = () => {
         const newsSubset = sortedNews.slice(currentPage * perPage, Math.min((currentPage * perPage) + perPage, sortedNews.length))
-        console.log(perPage)
-        console.log(currentPage * perPage, Math.min((currentPage * perPage) + perPage, sortedNews.length))
-        console.log(newsSubset)
         var rows = Math.floor(newsSubset.length/4)
         var results = [];
         for(let i = 0; i < rows; i++){
@@ -48,8 +45,8 @@ export default function NewsGrid(props){
 
     console.log(sortedNews.length)
 
-    return (<div>
+    return (<div style={{display: 'flex', flexDirection: 'column'}}>
         {generateRows().map(item => <Row style={{marginTop: '20px'}}>{item}</Row>)}
-        <Pagination total={sortedNews.length} pageSizeOptions={[8, 20, 60, 100]} defaultPageSize={8} onShowSizeChange={(current, size) => setPerPage(size)} onChange={(page) => setCurrentPage(page - 1)} style={{marginTop: '20px'}}/>
+        <Pagination total={sortedNews.length} pageSizeOptions={[8, 20, 60, 100]} defaultPageSize={8} onShowSizeChange={(current, size) => setPerPage(size)} onChange={(page) => setCurrentPage(page - 1)} style={{marginTop: '20px', alignSelf: 'center'}}/>
     </div>)
 }

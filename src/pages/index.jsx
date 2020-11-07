@@ -19,9 +19,9 @@ export default function HomePage(props){
 
     return (
         <div>
-            <div style={{padding: '40px 40px 40px 40px'}}>
-                <Search enterButton={"Search"} size={"large"} style={{width: '500px'}}></Search>
-                <div>
+            <div style={{padding: '40px 40px 40px 40px', display: 'flex', flexDirection: 'column'}}>
+                <Search enterButton={"Search"} size={"large"} style={{width: '500px', alignSelf: 'center'}}></Search>
+                <div style={{alignSelf: 'center', marginTop: '10px'}}>
                     <Space align={'center'}>
                         <Switch></Switch>
                         <p style={{marginBottom: '0px'}}>Entertainment</p>
