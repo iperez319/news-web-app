@@ -5,26 +5,21 @@ import {Col, Row, Pagination} from "antd";
 import NewsArticle from "../NewsArticle";
 
 export default function NewsGrid(props){
-    const {sportsHeadlines, entHeadlines, techHeadlines, type} = useSelector(state => state.news);
+    const {sportsHeadlines, entHeadlines, techHeadlines, type, showEnt, showSports, showTech} = useSelector(state => state.news);
     const [currentPage, setCurrentPage] = useState(0);
     const [perPage, setPerPage] = useState(8);
     var news = []
-    switch(type){
-        case "all":
-            news = _.concat(techHeadlines, sportsHeadlines, entHeadlines);
-            break;
-        case "technology":
-            news = techHeadlines;
-            break;
-        case "entertainment":
-            news = entHeadlines;
-            break;
-        case "sports":
-            news = sportsHeadlines;
-            break;
-        default:
-            break;
+
+    if(showTech){
+        news = _.concat(news, techHeadlines);
     }
+    if(showEnt){
+        news = _.concat(news, entHeadlines);
+    }
+    if(showSports){
+        news = _.concat(news, sportsHeadlines);
+    }
+
     var sortedNews = _.sortBy(news, (item) => {
         return item.publishedAt;
     }).reverse();

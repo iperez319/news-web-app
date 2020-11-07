@@ -7,7 +7,9 @@ const newsSlice = createSlice({
         techHeadlines: [],
         entHeadlines: [],
         sportsHeadlines: [],
-        type: 'all'
+        showTech: true,
+        showEnt: true,
+        showSports: true,
     },
     reducers: {
         newsUpdateSucceeded(state, action) {
@@ -29,6 +31,18 @@ const newsSlice = createSlice({
                 case "entertainment":
                     state.entHeadlines = newData;
                     break;
+            }
+        },
+        updateTypeFilter(state, action){
+            const {type, val} = action.payload;
+            if (type == "technology"){
+                state.showTech = val
+            }
+            else if (type == "sports"){
+                state.showSports = val
+            }
+            else if (type == "entertainment") {
+                state.showEnt = val
             }
         },
         resetHeadlines(state, action) {
