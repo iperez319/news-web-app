@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import Routes from './pages/routes';
-import './App.less';
+import './App.css';
 
 function App() {
   return (
