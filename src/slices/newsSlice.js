@@ -54,6 +54,6 @@ const newsSlice = createSlice({
 export const newsUpdateRequested = createAction('news/newsUpdateRequested');
 export const getHeadlinesRequested = createAction('news/getHeadlinesRequested');
 
-export const {newsUpdateSucceeded, getHeadlinesSucceeded, resetHeadlines} = newsSlice.actions;
+export const {newsUpdateSucceeded, getHeadlinesSucceeded, updateTypeFilter} = newsSlice.actions;
 
 export default newsSlice.reducer;
