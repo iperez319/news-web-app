@@ -3,9 +3,9 @@ import {newsUpdateRequested, newsUpdateSucceeded, getHeadlinesRequested, getHead
 import {get} from "../utils";
 
 function* getHeadlines(action){
-    var category = action.payload;
+    var {category, query} = action.payload;
     try{
-       var response = yield call(get, `https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=78b9d599c4f94f8fa3afb1a5458928d6`);
+       var response = yield call(get, `https://newsapi.org/v2/top-headlines?category=${category}&pageSize=100&country=us&apiKey=78b9d599c4f94f8fa3afb1a5458928d6` + (query.length > 0 ? "&q=" + query : ""));
        yield put(getHeadlinesSucceeded({type: category, data: response.articles}));
     }
     catch (e){

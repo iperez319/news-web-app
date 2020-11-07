@@ -48,7 +48,7 @@ export default function NewsArticle(props){
 
     const generateCardNoImage = () => {
         return (
-            <div style={{width: '275px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', padding: '5px'}}>
+            <div style={{width: '300px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', padding: '5px'}}>
                 <div style={{display: 'flex', flexDirection: 'column', padding: '5px 10px 5px 10px'}}>
                     <div style={{marginBottom: '10px'}}>
                         {typeTag}
@@ -74,10 +74,10 @@ export default function NewsArticle(props){
     }
     const generateCardWithImage = () => {
         return (
-            <div style={{width: '275px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'}}>
+            <div style={{width: '300px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'}}>
                 <div style={{position: 'relative'}}>
                     {/*<img style={{width: '100%', borderRadius: '10px 10px 0px 0px'}} src={article.urlToImage}/>*/}
-                    <div style={{width: '100%', background:`url(${article.urlToImage}) no-repeat scroll center center`, backgroundSize: 'cover', objectFit: 'cover', height: '200px'}}></div>
+                    <div style={{width: '100%', background:`url(${article.urlToImage}) no-repeat scroll center center`, backgroundSize: 'cover', objectFit: 'cover', height: '300px', borderRadius: '10px 10px 0px 0px'}}></div>
                     <div style={{position: 'absolute', top: '15px', left: '15px'}}>
                         {typeTag}
                         {/*<Tag icon={<SyncOutlined spin />} color="processing">*/}

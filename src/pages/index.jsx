@@ -10,14 +10,21 @@ export default function HomePage(props){
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getHeadlinesRequested("technology"));
-        dispatch(getHeadlinesRequested("entertainment"));
-        dispatch(getHeadlinesRequested("sports"));
+        dispatch(getHeadlinesRequested({category: "technology", query: ""}));
+        dispatch(getHeadlinesRequested({category: "entertainment", query: ""}));
+        dispatch(getHeadlinesRequested({category: "sports", query: ""}));
     }, [])
 
     const {Search} = Input;
+    const [query, setQuery] = useState("");
 
     const {showEnt, showSports, showTech} = useSelector(state => state.news);
+
+    const handleSearch = () => {
+        dispatch(getHeadlinesRequested({category: "technology", query}));
+        dispatch(getHeadlinesRequested({category: "entertainment", query}));
+        dispatch(getHeadlinesRequested({category: "sports", query}));
+    }
 
     const handleToggle = (type) => {
         switch(type){
@@ -36,7 +43,7 @@ export default function HomePage(props){
     return (
         <div>
             <div style={{padding: '40px 40px 40px 40px', display: 'flex', flexDirection: 'column'}}>
-                <Search enterButton={"Search"} size={"large"} style={{width: '500px', alignSelf: 'center'}}></Search>
+                <Search onChange={(e) => setQuery(e.target.value)} onEnter={handleSearch} onSearch={handleSearch} enterButton={"Search"} size={"large"} style={{width: '500px', alignSelf: 'center'}}></Search>
                 <div style={{alignSelf: 'center', marginTop: '10px'}}>
                     <Space align={'center'}>
                         <Switch checked={showEnt} onClick={() => handleToggle("entertainment")}></Switch>
